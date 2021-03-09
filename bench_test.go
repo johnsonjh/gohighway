@@ -2,8 +2,10 @@ package highway
 
 import "testing"
 
-var total uint64
-var buf = make([]byte, 8<<10)
+var (
+	total uint64
+	buf   = make([]byte, 8<<10)
+)
 
 func BenchmarkHighway8(b *testing.B)  { benchmarkHash(b, 8) }
 func BenchmarkHighway16(b *testing.B) { benchmarkHash(b, 16) }

@@ -5,10 +5,9 @@ import (
 )
 
 func TestHighway(t *testing.T) {
-
 	input := make([]byte, 64)
 
-	var tests = []uint64{
+	tests := []uint64{
 		0x907a56de22c26e53, 0x7eab43aac7cddd78, 0xb8d0569ab0b53d62,
 		0x5c6befab8a463d80, 0xf205a46893007eda, 0x2b8a1668e4a94541,
 		0xbd4ccc325befca6f, 0x4d02ae1738f59482, 0xe1205108e55f3171,
@@ -47,7 +46,6 @@ func TestHighway(t *testing.T) {
 }
 
 func TestCompare(t *testing.T) {
-
 	input := make([]byte, 64)
 
 	key := Lanes{0x0706050403020100, 0x0F0E0D0C0B0A0908, 0x1716151413121110, 0x1F1E1D1C1B1A1918}
