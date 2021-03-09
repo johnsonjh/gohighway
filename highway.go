@@ -59,7 +59,6 @@ func (s *state) Update(packet []byte) {
 }
 
 func (s *state) Finalize() uint64 {
-
 	s.PermuteAndUpdate()
 	s.PermuteAndUpdate()
 	s.PermuteAndUpdate()
@@ -122,7 +121,6 @@ func (s *state) PermuteAndUpdate() {
 }
 
 func Hash(key Lanes, bytes []byte) uint64 {
-
 	if useSSE {
 		return hashSSE(&key, &init0, &init1, bytes)
 	}
