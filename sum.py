@@ -15,16 +15,28 @@ class State:
     def load(self, ptr):
         # load state into xmm registers
         for i, r in enumerate([
-                self.v0lo, self.v0hi, self.v1lo, self.v1hi, self.mul0lo,
-                self.mul0hi, self.mul1lo, self.mul1hi
+                self.v0lo,
+                self.v0hi,
+                self.v1lo,
+                self.v1hi,
+                self.mul0lo,
+                self.mul0hi,
+                self.mul1lo,
+                self.mul1hi,
         ]):
             MOVDQU(r, [ptr + i * r.size])
 
     def store(self, ptr):
         # load state into xmm registers
         for i, r in enumerate([
-                self.v0lo, self.v0hi, self.v1lo, self.v1hi, self.mul0lo,
-                self.mul0hi, self.mul1lo, self.mul1hi
+                self.v0lo,
+                self.v0hi,
+                self.v1lo,
+                self.v1hi,
+                self.mul0lo,
+                self.mul0hi,
+                self.mul1lo,
+                self.mul1hi,
         ]):
             MOVDQU([ptr + i * r.size], r)
 
@@ -37,6 +49,7 @@ def permute(dstlo, dsthi, srclo, srchi):
     PSHUFD(dstlo, srchi, mm_shufmask(2, 3, 0, 1))
     PSHUFD(dsthi, srclo, mm_shufmask(2, 3, 0, 1))
 
+
 def rotate32By(dst, count):
     t = XMMRegister()
     c = XMMRegister()
@@ -48,6 +61,7 @@ def rotate32By(dst, count):
     MOVQ(c, count)
     PSRLD(dst, c)
     POR(dst, t)
+
 
 def zippermask():
     x = GeneralPurposeRegister64()
@@ -242,9 +256,11 @@ def MakeHash():
     p_cap = Argument(int64_t)
 
     with Function(
-            "hashSSE", (keys, init0, init1, p_base, p_len, p_cap),
+            "hashSSE",
+        (keys, init0, init1, p_base, p_len, p_cap),
             uint64_t,
-            target=uarch.default + isa.sse4_1) as function:
+            target=uarch.default + isa.sse4_1,
+    ) as function:
 
         reg_keys = GeneralPurposeRegister64()
         reg_init0 = GeneralPurposeRegister64()
@@ -283,7 +299,6 @@ def MakeHash():
         lfinalize = Label("finalize")
         CMP(reg_p_len, 0)
         JZ(lfinalize)
-
 
         # TODO(dgryski): remove this variable; reuse reg_p_len
         reg_remMod32 = GeneralPurposeRegister64()
