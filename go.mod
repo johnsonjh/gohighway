@@ -1,4 +1,4 @@
-module github.com/johnsonjh/go-highway
+module github.com/johnsonjh/gohighway
 
 go 1.17
 
