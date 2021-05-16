@@ -2,9 +2,12 @@ package highway
 
 import (
 	"testing"
+
+	u "github.com/johnsonjh/leaktestfe"
 )
 
 func TestHighway(t *testing.T) {
+	defer u.Leakplug(t)
 	input := make([]byte, 64)
 
 	tests := []uint64{
@@ -46,6 +49,7 @@ func TestHighway(t *testing.T) {
 }
 
 func TestCompare(t *testing.T) {
+	defer u.Leakplug(t)
 	input := make([]byte, 64)
 
 	key := Lanes{0x0706050403020100, 0x0F0E0D0C0B0A0908, 0x1716151413121110, 0x1F1E1D1C1B1A1918}
