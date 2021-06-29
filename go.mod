@@ -6,5 +6,5 @@ require (
 	github.com/intel-go/cpuid v0.0.0-20210602155658-5747e5cec0d9
 	github.com/johnsonjh/leaktestfe v0.0.0-20210616124443-1446a662defb
 	go.uber.org/goleak v1.1.11-0.20210525221708-d36f3aede898
-	golang.org/x/tools v0.1.5-0.20210625235321-12f8456a0162
+	golang.org/x/tools v0.1.5-0.20210629191230-72e4d1bb8d47
 )
